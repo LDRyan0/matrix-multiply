@@ -40,7 +40,7 @@ void BM_matMul(benchmark::State &state) {
     for(int row = 0; row < N; ++row)
       for(int block = 0; block < N; block += 16)
         for(int chunk = 0; chunk < N; chunk += 16)
-          for(int subChunk = 0; subChunk < 16; subChunk += 16)
+          for(int subChunk = 0; subChunk < 16; ++subChunk)
             for(int idx = 0; idx < 16; ++idx) 
               C[row*N+block+idx] += A[row*N+chunk+subChunk] * B[(chunk+subChunk)*N+block+idx];
   }
